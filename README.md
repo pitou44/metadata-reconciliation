@@ -35,9 +35,3 @@ A separate VLM generates structured natural-language descriptions of each image 
 Extracted codes with their metadata and image descriptions are fed into a large language model, which cross-references all available information to produce image-to-code matches. The system returns only high-confidence matches, prioritizing **precision over recall**. Preliminary testing on a small subset suggests a match rate of **40–60%** at over **98% accuracy**.
 
 ---
-
-## Implications & Limitations
-
-This project targets a minimum of **20,000 successful matches** -> more than double the output of a decade of manual work. The pipeline will be **open-sourced on GitHub** with full documentation, providing a replicable toolkit for other institutions. A Solution Architecture report will ensure GW faculty can maintain the system after the project period. Results will be presented at the **GW Undergraduate Research Showcase**.
-
-The primary limitation is that the system intentionally returns only high-confidence matches, so some images will remain unmatched. OCR performance may also vary on severely degraded slides. This project processes institutional archival data under the faculty mentor's supervision, involves no human subjects, and requires no IRB review.
