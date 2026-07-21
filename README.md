@@ -19,19 +19,3 @@ Each physical slide has a handwritten or typed alphanumeric code on its mount th
 Recent advances in vision-language models (Liu et al., 2023; Bai et al., 2023) and large language models for record linkage tasks (Narayan et al., 2022) suggest a computational approach is now viable, but coordinated AI systems have not yet been applied to cultural heritage metadata reconciliation. **This project fills that gap.**
 
 ---
-
-## Methodology
-
-### Stage 1 -> PDF Segmentation & OCR
-Each scanned PDF sheet (~150 slide mounts) is programmatically divided into individual bounding boxes. A vision-language model (VLM) performs OCR on each segment to extract the alphanumeric code. A VLM is used because conventional OCR software cannot reliably read the mix of handwritten and typed text on these degraded scans.
-
-### Stage 2 -> Code Validation
-Extracted codes are checked against the metadata database. Since OCR frequently produces character-level errors, a fuzzy-matching routine tests plausible substitutions (`"0"` for `"O"`, `"1"` for `"l"`) to find valid entries. Artist attributions in image filenames provide additional validation.
-
-### Stage 3 -> Image Feature Extraction
-A separate VLM generates structured natural-language descriptions of each image covering art style, subject matter, composition, and medium, saved as JSON records.
-
-### Stage 4 -> LLM-Based Matching
-Extracted codes with their metadata and image descriptions are fed into a large language model, which cross-references all available information to produce image-to-code matches. The system returns only high-confidence matches, prioritizing **precision over recall**. Preliminary testing on a small subset suggests a match rate of **40–60%** at over **98% accuracy**.
-
----
